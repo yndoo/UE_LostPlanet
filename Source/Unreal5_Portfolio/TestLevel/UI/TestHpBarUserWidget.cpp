@@ -111,7 +111,7 @@ void UTestHpBarUserWidget::HpbarUpdate(int _Token, float _CurHp, float _MaxHp)
 	
 }
 
-void UTestHpBarUserWidget::NickNameUpdate(int _Token, FText _nickname)
+void UTestHpBarUserWidget::NickNameUpdate(int _Token, FText _Nickname)
 {
 	if (-1 == MainPlayerToken)
 	{
@@ -120,7 +120,7 @@ void UTestHpBarUserWidget::NickNameUpdate(int _Token, FText _nickname)
 
 	if (MainPlayerToken == _Token)
 	{
-		HpWidgets[0]->SetNickName(_nickname);
+		HpWidgets[0]->SetNickName(_Nickname);
 		return;
 	}
 
@@ -128,7 +128,7 @@ void UTestHpBarUserWidget::NickNameUpdate(int _Token, FText _nickname)
 	{
 		if (OtherPlayerNum[i] == _Token)
 		{
-			HpWidgets[i + 1]->SetNickName(_nickname);
+			HpWidgets[i + 1]->SetNickName(_Nickname);
 			return;
 		}
 	}

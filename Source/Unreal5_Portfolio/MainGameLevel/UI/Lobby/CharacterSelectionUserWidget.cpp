@@ -39,6 +39,6 @@ void UCharacterSelectionUserWidget::SetSelectedCharacter(int _Num)
 	{
 		LOG(UILog, Fatal, "ALobbyCharacter is Null");
 	}
-	//MyChar->MyChracterType = CharTypeName[_Num];
+
 	MyChar->ClientChangedMesh(CharTypeName[_Num]);
 }
