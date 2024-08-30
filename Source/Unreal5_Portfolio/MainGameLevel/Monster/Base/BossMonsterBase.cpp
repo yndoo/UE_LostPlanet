@@ -111,16 +111,21 @@ void ABossMonsterBase::BeginPlay()
 		return;
 	}
 
-	AMainGameHUD* BossUHD = Cast<AMainGameHUD>(PlayerController->GetHUD());
-	if (nullptr == BossUHD)
+	AMainGameHUD* GameHUD = Cast<AMainGameHUD>(PlayerController->GetHUD());
+	if (nullptr == GameHUD)
 	{
 		LOG(MonsterLog, Fatal, "BossHUD is Null");
 		return;
 	}
 
-	Cast<UBossHpbarUserWidget>(BossUHD->GetWidget(EUserWidgetType::BossHpbar))->SetBossName(FText::FromString(SettingData->BaseData->BossName));
-	Cast<UBossHpbarUserWidget>(BossUHD->GetWidget(EUserWidgetType::BossHpbar))->SetHp(SettingData->Hp, SettingData->BaseData->MaxHp);
-	BossUHD->UIOn(EUserWidgetType::BossHpbar);
+	Cast<UBossHpbarUserWidget>(GameHUD->GetWidget(EUserWidgetType::BossHpbar))
+		->SetBossName(FText::FromString(SettingData->BaseData->BossName));
+
+	Cast<UBossHpbarUserWidget>(GameHUD->GetWidget(EUserWidgetType::BossHpbar))
+		->SetHp(SettingData->Hp, SettingData->BaseData->MaxHp);
+
+
+	GameHUD->UIOn(EUserWidgetType::BossHpbar);
 
 	// Binding
 	AttackComponent->OnComponentEndOverlap.AddDynamic(this, &ABossMonsterBase::OnAttackOverlapEnd);

@@ -24,7 +24,7 @@ void USettingBrowserUserWidget::NativeConstruct()
 
 void USettingBrowserUserWidget::OnOkButtonClicked()
 {
-	UMainGameInstance* Inst = UMainGameBlueprintFunctionLibrary::GetMainGameInstance(GetWorld());
+	UMainGameInstance* MainGameInstance = UMainGameBlueprintFunctionLibrary::GetMainGameInstance(GetWorld());
 	APlayerController* MyController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	if (nullptr == MyController)
 	{
@@ -39,7 +39,7 @@ void USettingBrowserUserWidget::OnOkButtonClicked()
 
 	// 세팅값들을 MainGameInstance에 저장 
 	FText text = NameTextBox->GetText();
-	Inst->SetMainNickName(text.ToString()); // 닉네임 
+	MainGameInstance->SetMainNickName(text.ToString()); // 닉네임 
 
 	// 창 닫기 
 	TitleHUD->UIOff(EUserWidgetType::SettingBrowser);
